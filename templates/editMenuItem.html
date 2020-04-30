@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel=stylesheet type='text/css' href="{{url_for('static', filename='styles.css')}}">
+</head>
+    <body>
+    
+        <h1>Edit Menu Item</h1>
+        <div class="pane">
+        <div class="control">
+            <a href = "{{url_for('listRestaurants') }}">Back</a></div>
+        <div class ="inputform">
+        <form action="{{url_for('editMenuItem', restaurant_id = restaurant_id, menu_id =menu.id)}}" method='POST'>
+            <p>Name: {{menu.name}}</p>
+            <input type='text' name='name' placeholder='{{menu.name}}'>
+            <p>Price:</p>
+            <input type='text' name='price' placeholder='{{menu.price}}'>
+            <p>Description:</p>
+            <input type='text' name='description' placeholder='{{menu.description}}'>
+            <p>Course:</p>
+            <input type="radio" name="course" value="Appetizer"
+            {% if menu.course == "Appetizer" %} checked {% endif %}> Appetizer<br/>
+            <input type="radio" name="course" value="Entree"
+            {% if menu.course == "Entree" %} checked {% endif %}> Entree<br/>
+            <input type="radio" name="course" value="Dessert"
+            {% if menu.course == "Dessert" %} checked {% endif %}> Dessert<br/>
+            <input type="radio" name="course" value="Beverage"
+           {% if menu.course == "Beverage"%} checked {% endif %}> Beverage<br/><br/>
+            <input type='submit' value='Edit'>
+        </form><br/>
+        </div>
+        </div>
+    </body>
+</html>
